@@ -4,7 +4,7 @@
 // @description tvoi mama ibalj
 // @include     http://www.odnoklassniki.ru/online
 // @include     http://odnoklassniki.ru/online
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
 
@@ -35,7 +35,7 @@ document.getElementsByClass = function(tagName, className) {
 }
 
 function getRandomWordIndex() {
-	return Math.floor(Math.random() * words.length);
+	return Math.floor(Math.random() * kavkazWordList.length);
 }
 
 function createPhrase(wordCount) {
@@ -45,7 +45,7 @@ function createPhrase(wordCount) {
 		phrase.push(words[j]);
 	}
 	
-	return phrase.join(' ') + pharseEnd;
+	return phrase.join(' ') + kavkazPhraseEnd;
 }
 
 function processPhoto (photos) {

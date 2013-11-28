@@ -38,11 +38,11 @@ function getRandomWordIndex() {
 	return Math.floor(Math.random() * kavkazWordList.length);
 }
 
-function createPhrase(wordCount) {
+function createPhrase() {
 	var phrase = [];
-	for (var i = 0; i < wordCount; i++) {
+	for (var i = 0; i < kavkazWordList.length; i++) {
 		var j = getRandomWordIndex();
-		phrase.push(words[j]);
+		phrase.push(kavkazWordList[j]);
 	}
 	
 	return phrase.join(' ') + kavkazPhraseEnd;
@@ -77,7 +77,7 @@ function processPhoto (photos) {
         commentEditField = commentBlock.children[1];
         commentEditField.focus ();
         commentEditField = commentBlock.children[0];
-        commentEditField.value = createPhrase(getRandomWordIndex());
+        commentEditField.value = createPhrase();
         setTimeout (function () {
           commentButton = commentBlock.children[4].children[0];
           if (commentButton) {

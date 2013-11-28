@@ -4,7 +4,7 @@
 // @description tvoi mama ibalj
 // @include     http://www.odnoklassniki.ru/online
 // @include     http://odnoklassniki.ru/online
-// @version     1.2
+// @version     1.2.2
 // @grant       none
 // ==/UserScript==
 
@@ -19,8 +19,9 @@ var initialWaitTime = 5000,
     maxAge = "29",    // <= 99
     
     cityList = [ "Грозный", "Урус-Мартан", "Гудермес", "Хасавюрт", "Дербент", "Махачкала" ],
-    kavkazWordList = ["МАМУ", "ТВАЮ", "КАУКАЗ", "АЛАХ", "БРАТ", "ТИ", "ГИДЕ", "В ЖОПУ", "ШЛЮХИ", "КАДЫРОВ", "МАСКВА", "ЕБАЛ", "ТИБЯ", "НАЙДУ", "ДУДАЕВ", "АЙПИ"];
-    kavkazPhraseEnd = '!!!!!!';
+    kavkazWordList = ["МАМУ", "ТВАЮ", "КАУКАЗ", "АЛАХ", "БРАТ", "ТИ", "ГИДЕ", "В ЖОПУ", "ШЛЮХИ", "КАДЫРОВ", "МАСКВА", "ЕБАЛ", "ТИБЯ", "НАЙДУ", "РОД", "СУКА", "БЛЯ"];
+    kavkazPhraseEnd = '!!!!!!',
+    prevWord = -1;
 
 document.getElementsByClass = function(tagName, className) {
   var itemsfound = new Array,
@@ -39,12 +40,16 @@ function getRandomWordIndex() {
 }
 
 function createPhrase() {
-	var phrase = [];
-	for (var i = 0; i < kavkazWordList.length; i++) {
-		var j = getRandomWordIndex();
-		phrase.push(kavkazWordList[j]);
+	var phrase = [],
+      i, j;
+	for ( i = 0; i < kavkazWordList.length; i++) {
+		do {
+      j = getRandomWordIndex();
+    } while (j === prevWord);
+    prevWord = j;
+    phrase.push(kavkazWordList[j]);
 	}
-	
+	prevWord = -1;
 	return phrase.join(' ') + kavkazPhraseEnd;
 }
 

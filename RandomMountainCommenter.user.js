@@ -19,7 +19,7 @@ var initialWaitTime = 5000,
     maxAge = "29",    // <= 99
     
     cityList = [ "Грозный", "Урус-Мартан", "Гудермес", "Хасавюрт", "Дербент", "Махачкала" ],
-    kavkazWordList = ["МАМУ", "ТВАЮ", "КАУКАЗ", "АЛАХ", "БРАТ", "ТИ", "ГИДЕ", "В ЖОПУ", "ШЛЮХИ", "И", "А", "МАСКВА", "ЕБАЛ", "ТИБЯ", "НАЙДУ", "РОД", "СУКА", "БЛЯ", "СУКИН СЫН",
+    kavkazWordList = ["МАМУ", "ТВАЮ", "КАУКАЗЦЕВ", "ТИ", "В ЖОПУ", "ШЛЮХИ", "И", "А", "ВЫИБУ", "ЕБАЛ", "ТИБЯ", "НАЙДУ", "РОД", "СУКА", "БЛЯ", "СУКИН СЫН",
                         "ЖИ ЕСТЬ", "БАРАН", "СЕСТРУ", "СЕМЬЮ", "ЕБАЛ" ],
     kavkazPhraseEnd = '!!!!!!',
     prevWord = -1;
@@ -43,7 +43,7 @@ function getRandomWordIndex() {
 function createPhrase() {
 	var phrase = [],
       i, j;
-	for ( i = 0; i < kavkazWordList.length; i++) {
+	for ( i = 0; i < getRandomWordIndex()  + 2; i++) {
 		do {
       j = getRandomWordIndex();
     } while (j === prevWord);

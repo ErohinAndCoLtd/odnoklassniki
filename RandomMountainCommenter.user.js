@@ -94,7 +94,7 @@ function processPhoto (photos) {
             processPhoto (photos);
           }, closeWaitTime);
         }, popupWaitTime);
-      } else if (document.getElementById ("addPrivateProfileButton")) {
+      } else if (document.getElementById ("addPrivateProfileButton") || document.getElementsByClass ("button-pro button-pro_disabled").length === 0) {
         usersOnlineButton.click();
         setTimeout(doScript, reloadWaitTime);  
       } else {

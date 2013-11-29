@@ -70,17 +70,22 @@ function processPhoto (photos) {
         commentEditField = commentBlock.children[1];
         commentEditField.focus ();
         commentEditField = commentBlock.children[0];
-        commentEditField.value = phraseList[rand];
-        setTimeout (function () {
-          commentButton = commentBlock.children[4].children[0];
-          if (commentButton) {
-            commentButton.click();  
-          }
-          closeButton.click();
+        if (commentEditField) {
+          commentEditField.value = phraseList[rand];
           setTimeout (function () {
-            processPhoto (photos);
-          }, closeWaitTime);
-        }, popupWaitTime);
+            commentButton = commentBlock.children[4].children[0];
+            if (commentButton) {
+              commentButton.click();  
+            }
+            closeButton.click();
+            setTimeout (function () {
+              processPhoto (photos);
+            }, closeWaitTime);
+          }, popupWaitTime);
+        } else {
+          usersOnlineButton.click();
+          setTimeout(doScript, reloadWaitTime);   
+        }
       } else if (document.getElementById ("addPrivateProfileButton")) {
         usersOnlineButton.click();
         setTimeout(doScript, reloadWaitTime);  
